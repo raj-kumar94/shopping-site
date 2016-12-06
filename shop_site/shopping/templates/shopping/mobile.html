@@ -1,0 +1,50 @@
+{% extends 'shopping/base.html' %}
+{% block body %}
+{% load staticfiles %}
+
+{% if mobile_names %}
+    <div class="abc">
+        {% for phones in mobile_names %}
+            <li>{{ phones }}</li>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if phones_name %}
+    {% for phones in phones_name %}
+
+            <img src=" {{ phones.image.url }}">
+
+    {% endfor %}
+{% endif %}
+
+
+<table width = "100%" border = "0" cellspacing = "0" cellpadding = "0">
+<tr>
+<td align = "center" valign = "middle">
+<form method = "post" action = "{% url 'shopping:mobile' %}" >{% csrf_token %}
+<table width = "250" border = "1" cellspacing = "0" cellpadding = "0">
+<tr>
+<td colspan = "2" align  = "center"><h2> Mobiles </h2>
+</td></tr>
+<tr>
+<td align = "center" valign = "middle"><img src = "{% static 'shopping/images/mobile1.jpg' %}"><br><br>
+<input type= "checkbox" name = "mobile" value = "iphone" > i phone 5c</td>
+<td align = "center" valign = "middle"><img src = "{% static 'shopping/images/mobile2.jpg' %}"><br>
+<input type= "checkbox" name = "mobile" value = "note2" > Galaxy note 2</td>
+</tr>
+<tr>
+<td align = "center" valign = "middle"><img src = "{% static 'shopping/images/mobile3.jpg' %}"><br><br>
+<input type= "checkbox" name = "mobile" value = "Xperia" >Xperia Z2</td>
+<td align = "center" valign= "middle"><img src = "{% static 'shopping/images/mobile4.jpg' %}"><br>
+<input type= "checkbox" name = "mobile" value = "MotoG" >MotoG</td>
+</tr>
+<td colspan= "2" align = "center" >
+<input type = "submit" name = "buy" value = "Buy Now" />
+</table>
+</form></td></tr>
+</table>
+
+
+
+{% endblock %}

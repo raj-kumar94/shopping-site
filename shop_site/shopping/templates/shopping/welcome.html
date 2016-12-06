@@ -1,0 +1,41 @@
+{% extends 'shopping/base.html' %}
+
+{% block body %}
+
+    {% if msg %}
+       <h1> {{ msg }} </h1>
+    {% endif %}
+
+<table align="center" width = "250" border = "6" cellspacing = "0" cellpadding = "0" >
+<tr>
+<td><h2>  Welcome home
+</h2> </td>
+</tr>
+<br><br>
+<tr>
+
+<td><a href = "{% url 'shopping:mobile' %}" >Mobile</a></td>
+</tr><tr>
+<td><a href = "{% url 'shopping:laptop' %}" >Laptop</a></td>
+</tr><tr>
+<td><a href = "{% url 'shopping:car' %}" >Car</a></td>
+</tr><tr>
+<td><a href = "{% url 'shopping:watches' %}" >Watches</a></td>
+</tr>
+<tr>
+<td><a href = "{% url 'shopping:men' %}" >Men formals</a></td>
+</tr>
+<tr>
+<td><a href = "{% url 'shopping:women' %}" >Women formals</a></td>
+</tr>
+<tr>
+<td><a href = "cart" >See the Cart</a></td>
+</tr>
+<tr>
+<td><a href = "logout" >logout</a></td>
+</tr>
+</table>
+</td></tr>
+</table>
+
+{% endblock %}
