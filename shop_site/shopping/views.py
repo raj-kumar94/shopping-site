@@ -1,3 +1,4 @@
+# from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
@@ -93,7 +94,9 @@ def register(request):  #registers and logges the user
 
 
 def watches(request):
-    return render(request, "shopping/watches.html")
+    #return redirect(reverse('shopping:women'))  #works
+    return redirect('shopping:women')
+    #return render(request, "shopping/watches.html")
 
 
 def women(request):
@@ -178,4 +181,28 @@ def delete_cart(request):
 
     return render(request, 'shopping/profile.html', {})
     #return redirect('women')   #not working
+
+def item_detail(request, item_type, item_code):
+    try:
+        product = Items.objects.get(code=item_code) # get() raise exception
+    except Items.DoesNotExist:
+        raise Http404("No MyModel matches the given query.")
+
+
+    # define dictionary for item_type
+    item_dict = {"mobile":"Phones",}
+
+    try:
+        phones_db_name = Items.objects.filter(item_type=item_dict[item_type])  # filter() doesnt raise exception but dictionary does
+    except:
+        raise Http404("fsfd.")
+
+    #phones_db_name = Items.objects.filter(item_type=item_dict[item_type])
+    if not len(phones_db_name):
+        raise Http404("no requested item type found")
+
+    context = {"product":product,"phone_db_name":phones_db_name,}
+
+    return render(request,'shopping/item_details.html', context)
+
 

@@ -1,0 +1,18 @@
+{% extends 'shopping/base.html' %}
+{% block body %}
+{% load staticfiles %}
+
+{% if product %}
+    <div class="container">
+        <img src="{{ product.image.url }}">
+        <h1>{{ product.name }}</h1>
+        <h3>Price:  {{ product.price }} INR</h3>
+        <p>{{ product.description }}</p><br>
+        {{ phone_db_name }}
+    </div>
+
+{% endif %}
+
+
+
+{% endblock %}

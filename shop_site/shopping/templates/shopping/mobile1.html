@@ -25,33 +25,24 @@
 {% if phones_name %}
     {% for phones in phones_name %}
 
-         <tr>
-         {% if forloop.counter|divisibleby:"2" %}
 
-            <td align = "center" valign = "middle"><img src = "{{ phones.image.url }}"><br><br>
-            <input type= "checkbox" name = "mobile" value = "{{ phones.code }}" >{{ forloop.counter }} {{ phones.name }}</td>
-
-             <td align = "center" valign = "middle"><br><br>
-             {{ phones.name }}</td>
-             <td align = "center" valign = "middle"><br><br>
-             {{ phones.price }}/-</td>
-             <td align = "center" valign = "middle"><br><br>
-             {{ phones.description }}</td>
-
-         {% elif forloop.counter|divisibleby:"1" %}
-            <td align = "center" valign = "middle"><img src = "{{ phones.image.url }}"><br>
-            <input type= "checkbox" name = "mobile" value = "{{ phones.code }}" >{{ forloop.counter }} {{ phones.name }}</td>
-
-            <td align = "center" valign = "middle"><br><br>
-             {{ phones.name }}</td>
-             <td align = "center" valign = "middle"><br><br>
-             {{ phones.price }}/-</td>
-             <td align = "center" valign = "middle"><br><br>
-             {{ phones.description }}</td>
-
-
+         {% if forloop.counter0|divisibleby:2 %}
+             <tr>
          {% endif %}
-        </tr>
+
+            <td align = "center" valign = "middle">
+                <a href="{{ phones.code }}">
+                <img src = "{{ phones.image.url }}" width="200px" height="200px">
+                </a><br><br>
+            <input type= "checkbox" name = "mobile" value = "{{ phones.code }}" ><a href="{{ phones.code }}">{{ phones.name }}</a>
+            <br>{{ phones.price }}/-
+            </td>
+
+         {% if forloop.counter|divisibleby:2 or forloop.last %}
+             </tr>
+         {% endif %}
+
+
 
     {% endfor %}
 {% endif %}

@@ -19,7 +19,9 @@ urlpatterns = [
     url(r'^logme/$', views.logme,name='logme'),
     url(r'^profile/$', views.profile,name='profile'),
     url(r'^profile_edited/$', views.profile_edited,name='profile_edited'),
-    url(r'^delete_cart/$', views.delete_cart, name='delete_cart'),
+    url(r'^profile/items_removed/$', views.delete_cart,name='delete_cart'),
+    url(r'^(?P<item_type>\w+)/(?P<item_code>\w+)/$', views.item_detail, name='item_detail'),
+
 
 
 ]
